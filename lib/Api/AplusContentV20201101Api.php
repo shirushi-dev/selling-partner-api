@@ -87,8 +87,6 @@ class AplusContentV20201101Api extends BaseApi
                 $body = (string) ($hasResponse ? $e->getResponse()->getBody() : '[NULL response]');
                 $this->writeDebug($e->getResponse());
                 $this->writeDebug($body);
-                return $e->getCode(); //処理は止めずにエラーコードを返す。
-
                 return $e->getCode();
                 throw new ApiException(
                     "[{$e->getCode()}] {$body}",
@@ -489,8 +487,6 @@ class AplusContentV20201101Api extends BaseApi
                 $body = (string) ($hasResponse ? $e->getResponse()->getBody() : '[NULL response]');
                 $this->writeDebug($e->getResponse());
                 $this->writeDebug($body);
-                return $e->getCode(); //処理は止めずにエラーコードを返す。
-
                 return $e->getCode();
                 throw new ApiException(
                     "[{$e->getCode()}] {$body}",
