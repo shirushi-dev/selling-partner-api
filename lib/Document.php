@@ -179,7 +179,8 @@ class Document
                 $spreadsheet = $reader->load($this->tmpFilename);
                 if ($this->contentType !== ContentType::XLSX) {
                     // Avoid spreadsheet formula processing when loading CSV or TAB files
-                    $sheet = $spreadsheet->getSheet(0)->toArray(null, false);
+                    // 7番目の lessFloatPrecision (5.x) を true にしないと "80.4" が "80.40000000000001" になる。1.x は余分な引数を無視する
+                    $sheet = $spreadsheet->getSheet(0)->toArray(null, false, true, false, false, false, true);
                     // Turn each row of data into an associative array with the headers as keys
                     array_walk($sheet, function (&$row) use ($sheet) {
                         $row = array_combine($sheet[0], $row);
